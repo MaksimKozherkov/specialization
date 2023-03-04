@@ -35,22 +35,11 @@ string[] array = GetArray(size);
 WriteLine();
 WriteLine("Полученный массив:");
 WriteLine("[{0}]", string.Join(", ", array));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+WriteLine();
+WriteLine("Результат:");
+string[] resultArray = NewArray(array, ARRLength);
+WriteLine("[{0}]", string.Join(", ", resultArray));
+WriteLine();
 
 string[] GetArray(int size)         // метод задающий массив
 {
@@ -61,4 +50,29 @@ string[] GetArray(int size)         // метод задающий массив
         arr[i] = ReadLine()!;
     }
     return arr;
+}
+
+
+string[] NewArray(string[] GetArray, int wordSize)        // метод формирования нового массива по условию задачи
+{
+    int count = 0;
+    for (int j = 0; j < GetArray.Length; j++)      
+    {
+        if (GetArray[j].Length <= wordSize)
+        {
+            count++;
+        }
+    }
+
+    int q = 0;
+    string[] newArr = new string[count];
+    for (int k = 0; k < GetArray.Length; k++)      
+    {
+        if (GetArray[k].Length <= wordSize)
+        {
+            newArr[q] = GetArray[k];
+            q++;
+        }
+    }
+    return newArr;
 }
